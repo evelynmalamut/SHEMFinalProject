@@ -1,13 +1,17 @@
 <html>
-<head></head>
+<head>
+
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="school.js"></script>
+    <script src="schools.js"></script>
+
+</head>
 <body>
 
-<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<script src="school.js"></script>
 
 <div data-role="page" id="page1">
     <div data-role="header">
@@ -18,13 +22,19 @@
         <input type="text" name="name" id="basic" value="">
     </div>
     <div id="xx">
-        <input type="button" value="Search" id="myButton" >
+        <input type="button" value="Search" id="myButton" href="#page2">
     </div>
 </div>
 <ul data-role="listview" id="myList">
 
 </ul>
+
+<div data-role="page" id="page2" data-add-back-btn="true">
+    <h1>Here are the tweets</h1>
+    <a href="#page1" data-icon="delete">Back fr</a>
+
 <div id="example1"></div>
+</div>
 
 </body>
 </html>

@@ -4,6 +4,10 @@
 
 var allTweetText = [];
 
+
+
+
+var word = '';
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
@@ -363,23 +367,11 @@ var allTweetText = [];
     window.__twttrf = twitterFetcher;
     window.twitterFetcher = twitterFetcher;
     return twitterFetcher;
+    console.log(allTweetText)
 }));
 
 
 
-var word = '';
-
-var configProfile = {
-    "profile": {"screenName": word},
-    "domId": 'example1',
-    "maxTweets": 50,
-    "enableLinks": true,
-    "showUser": true,
-    "showTime": true,
-    "showImages": false,
-    "lang": 'en'
-};
-twitterFetcher.fetch(configProfile);
 
 
 
@@ -387,41 +379,5 @@ function dateFormatter(date) {
     return date.toTimeString();
 }
 
-$(document).ready( function() {
-    $("#myButton").click(function () {
-        var word = document.getElementById("check").value;
-        var configProfile = {
-            "profile": {"screenName": word},
-            "domId": 'example1',
-            "maxTweets": 50,
-            "enableLinks": true,
-            "showUser": true,
-            "showTime": true,
-            "showImages": false,
-            "lang": 'en'
-        };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    });
-});
-
-console.log(allTweetText)
