@@ -2,6 +2,10 @@
  * Created by h205p2 on 5/23/17.
  */
 
+function clearInput() {
+    document.getElementById("basic").value = "";
+}
+
 $(document).ready( function() {
     $("#myButton").click(function () {
         var word = document.getElementById("basic").value;
