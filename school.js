@@ -4,6 +4,8 @@
 
 var allTweetText = [];
 
+var texts = "";
+
 
 
 
@@ -161,6 +163,7 @@ var word = '';
                 }
                 head.appendChild(script);
                 console.log(script)
+
             }
         },
         callback: function(data) {
@@ -306,6 +309,7 @@ var word = '';
                         if (printUser) {
                            // console.log(tweets[n].textContent)
                             allTweetText.push(tweets[n].textContent)
+                            texts = texts + tweets[n].textContent +"%2C"
                             op += '<div class="user">' + strip(authors[n].innerHTML) + '</div>';
                         }
                         op += '<p class="tweet">' + strip(tweets[n].innerHTML) + '</p>';
