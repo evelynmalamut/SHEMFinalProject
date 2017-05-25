@@ -12,6 +12,9 @@ $(document).ready( function() {
         var configProfile = {
             "profile": {"screenName": word},
             "domId": 'example1',
+            /*
+            this is the number of tweets that it'll get
+             */
             "maxTweets": 4,
             "enableLinks": true,
             "showUser": true,
@@ -25,7 +28,7 @@ $(document).ready( function() {
 
         console.log(allTweetText);
 
-        setTimeout(function(){ToneAnalizer(allTweetText)}, 1000);
+        setTimeout(function(){ToneAnalizer(allTweetText)}, 1500);
 
 
 
@@ -38,6 +41,9 @@ $(document).ready( function() {
 
 
 $(document).ready( function() {
+    /*
+    goes back to page 1 with the back button
+     */
     $("#myButton2").click(function () {
         $("body").pagecontainer("change", "#page1", {transition: "fade"});
     });
@@ -51,11 +57,20 @@ function ToneAnalizer(array){
     var textdext = "";
     var textdext2= "";
     varx = [];
+    /*
+     this for loop goes through the array, removing any links,
+     removing any spaces and replacing them with '%20' (That's what watson wants).
+     It puts the complete text of all the tweets into textdext. TextDext2 has the
+     same thing exept all the tweets are separated by '%2C'.
+     */
+
     for(var i = 0; i<array.length; i++) {
         var tempHolder = "";
-        console.log(array[i].replace(",",""))
-        array[i].replace(/[^a-zA-Z0-9]/g, '')
-        console.log(array[i].replace(",",""))
+        console.log(array[i].replace(",",""));
+
+        array[i].replace(/[^a-zA-Z0-9]/g, '');
+        console.log(array[i].replace(",",""));
+
         for (var j = 0; j < array[i].length; j++) {
 
             if (hasHTML(array[i])) {
@@ -84,16 +99,35 @@ function ToneAnalizer(array){
 
     textdext2.replace(/[^\w\s!?]/g,'');
     textdext.replace(/[^\w\s!?]/g,'');
-
+    /*
+    this removes all the text with only the 26 alphabet charictars
+    Watson gets confused with all that stuff.
+     */
 
     textdext2.replace(",","");
     textdext.replace(",","");
+    /*
+    this removes all the commas
+    Watson gets confused with commas
+     */
 console.log(textdext)
     console.log(textdext2)
 
-var searchQuery = "https://watson-api-explorer.mybluemix.net/natural-language-understanding/api/v1/analyze?version=2017-02-27&text="+textdext+"&features=sentiment&return_analyzed_text=false&clean=true&fallback_to_raw=true&concepts.limit=8&emotion.document=true&entities.limit=50&entities.emotion=false&entities.sentiment=false&keywords.limit=50&keywords.emotion=false&keywords.sentiment=false&relations.model=en-news&semantic_roles.limit=50&semantic_roles.entities=false&semantic_roles.keywords=false&sentiment.document=true&sentiment.targets="+textdext2;
+    var searchQuery = "https://watson-api-explorer.mybluemix.net/natural-language-understanding/api/v1/analyze?version=2017-02-27&text="+textdext+"&features=sentiment&return_analyzed_text=false&clean=true&fallback_to_raw=true&concepts.limit=8&emotion.document=true&entities.limit=50&entities.emotion=false&entities.sentiment=false&keywords.limit=50&keywords.emotion=false&keywords.sentiment=false&relations.model=en-news&semantic_roles.limit=50&semantic_roles.entities=false&semantic_roles.keywords=false&sentiment.document=true&sentiment.targets="+textdext2;
+/*
+This watson link is supposed to return sentiments for a list of different
+phrases. 'TextDext' is supposed to be a string that hold all the tweets that
+should be evaluated. There should be no punctuation or separations (commas and stuff).
+Indavidual words are separated by '%20'. 'TextDext2' Should hold the same content
+as textdext but it should have all of the tweets separated by '%2C'. That's how watson
+knows to evaluate each set of text in between the %2C as a separate comment.
 
-   // searchQuery//.replace(/[^\w\s!?]/g,'');
+
+Right now the function WORKS but only evaluates 1 tweet. Twice.. It would be great
+if somebody would figure out why that's happening and fix it.
+
+
+*/
     console.log(searchQuery)
     }
 
