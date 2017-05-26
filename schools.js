@@ -45,13 +45,13 @@ $(document).ready( function() {
 });
 
 
-var arrayOfSent = [];
-function ToneAnalizer(tweetList) {
-    for (var i = 0; i < tweetList.length; i = i + 1) {
-        console.log(tweetList[i])
-        var tempVar = tweetList[i].replace(/[^a-zA-Z0-9 ]/g, '');
+var arrayOfSentTweets = [];
+function ToneAnalizer(tweetListArray) {
+    for (var i = 0; i < tweetListArray.length; i = i + 1) {
+        console.log(tweetListArray[i])
+        var tempVartoHoldTweet = tweetListArray[i].replace(/[^a-zA-Z0-9 ]/g, '');
         $.ajax({
-            url: "https://watson-api-explorer.mybluemix.net/natural-language-understanding/api/v1/analyze?version=2017-02-27&text=" + tempVar + "&features=sentiment&return_analyzed_text=true&clean=true&fallback_to_raw=true&concepts.limit=8&emotion.document=true&entities.limit=50&entities.emotion=false&entities.sentiment=false&keywords.limit=50&keywords.emotion=false&keywords.sentiment=false&relations.model=en-news&semantic_roles.limit=50&semantic_roles.entities=false&semantic_roles.keywords=false&sentiment.document=true",
+            url: "https://watson-api-explorer.mybluemix.net/natural-language-understanding/api/v1/analyze?version=2017-02-27&text=" + tempVartoHoldTweet + "&features=sentiment&return_analyzed_text=true&clean=true&fallback_to_raw=true&concepts.limit=8&emotion.document=true&entities.limit=50&entities.emotion=false&entities.sentiment=false&keywords.limit=50&keywords.emotion=false&keywords.sentiment=false&relations.model=en-news&semantic_roles.limit=50&semantic_roles.entities=false&semantic_roles.keywords=false&sentiment.document=true",
             type: 'GET',
             crossDomain: true,
             dataType: 'json',
@@ -69,29 +69,29 @@ function ToneAnalizer(tweetList) {
 
 
     }
-    console.log(arrayOfSent);
-    setTimeout(function(){Averager(arrayOfSent)}, 1000)
+    console.log(arrayOfSentTweets);
+    setTimeout(function(){Averager(arrayOfSentTweets)}, 1000)
 
 }
 
 function arraypush(score){
-    arrayOfSent.push(score)
-    console.log(arrayOfSent)
+    arrayOfSentTweets.push(score)
+    console.log(arrayOfSentTweets)
 }
 
 function Averager (tweetScores){
-    var overalsent= 0
-    var overalsenttext= ""
+    var sentimentAverage= 0
+    var posOrNeg= ""
     for (i = 0; i < tweetScores.length; i++) {
-        overalsent = overalsent +tweetScores[i];
+        sentimentAverage = sentimentAverage +tweetScores[i];
     }
-    overalsent = overalsent / tweetScores.length;
-    if (overalsent > 0) {
-        overalsenttext = "Positive"
+    sentimentAverage = sentimentAverage / tweetScores.length;
+    if (sentimentAverage > 0) {
+        posOrNeg = "Positive"
     } else {
-        overalsenttext = "Negative"
+        posOrNeg = "Negative"
     }
-    $("#values").text(overalsenttext + " " + overalsent)
+    $("#values").text(posOrNeg + " " + sentimentAverage)
 
 
 }
