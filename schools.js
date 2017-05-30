@@ -23,7 +23,7 @@ $(document).ready( function() {
                 "lang": 'en'
             };
 
-            $("body").pagecontainer("change", "#page3", { transition: "fade"});
+            $("body").pagecontainer("change", "#page2", { transition: "fade"});
 
             twitterFetcher.fetch(configProfile);
             console.log(allTweetText);
