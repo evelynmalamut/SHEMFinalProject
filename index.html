@@ -19,7 +19,7 @@
     </div>
     <div role="main" class="ui-content">
         <label for="basic">Twitter user:</label>
-        <input type="text" value="realdonaldtrump"name="name" id="basic" >
+        <input type="text" value=""name="name" id="basic" >
     </div>
     <div id="xx">
         <input type="button"  value="Search" id="myButton" href="#page2">
@@ -34,9 +34,11 @@
         <h1>Here are the tweets</h1>
         <a href="#page1" data-role="button" data-icon="back" onclick="clearInput()">Back</a>
     </div>
+
     <div id="loadingScreen">
     </div>
     <div>
+        <input type="button"  value="Go to List of Tweets" id="tweetView" href="#page3">
         <h2 id="values"></h2>
         <ol data-role="listview" id="example2">
         </ol>
@@ -50,11 +52,11 @@
 <div data-role="page" id="page3" data-add-back-btn="true">
     <div data-role="header">
         <h1>Here are the tweets</h1>
-        <a href="#page1" data-role="button" data-icon="back" onclick="clearInput()">Back</a>
+        <a href="#page1" data-role="button" data-icon="back"  onclick = "history.go(0)" onclick="clearInput()">Back</a>
     </div>
 
     <div>
-        <ol data-role="listview" id="example1">
+        <ol data-role="listview" id="example1" >
         </ol>
     </div>
 

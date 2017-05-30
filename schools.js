@@ -1,6 +1,3 @@
-/**
- * Created by h205p2 on 5/23/17.
- */
 
 function clearInput() {
     document.getElementById("basic").value = "";
@@ -8,6 +5,34 @@ function clearInput() {
 }
 
 $(document).ready( function() {
+
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+            var word = document.getElementById("basic").value;
+            var configProfile = {
+                "profile": {"screenName": word},
+                "domId": 'example1',
+                /*
+                 this is the number of tweets that it'll get
+                 */
+                "maxTweets": 5,
+                "enableLinks": true,
+                "showUser": true,
+                "showTime": true,
+                "showImages": false,
+                "lang": 'en'
+            };
+
+            $("body").pagecontainer("change", "#page3", { transition: "fade"});
+
+            twitterFetcher.fetch(configProfile);
+            console.log(allTweetText);
+
+            setTimeout(function(){ToneAnalizer(allTweetText)}, 1500);
+            console.log(texts);
+        }
+    });
+
     $("#myButton").click(function () {
         var word = document.getElementById("basic").value;
         var configProfile = {
@@ -48,11 +73,18 @@ $(document).ready( function() {
 
 
 $(document).ready( function() {
+
+    $("#tweetView").click(function () {
+
+        $("body").pagecontainer("change", "#page3", {transition: "slide"})
+
+    })
     /*
     goes back to page 1 with the back button
      */
     $("#myButton2").click(function () {
         $("body").pagecontainer("change", "#page1", {transition: "slide"});
+
     });
 });
 
@@ -107,6 +139,8 @@ function Averager (tweetScores){
 
 
 }
+
+
 
 
 
