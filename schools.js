@@ -4,6 +4,7 @@
 
 function clearInput() {
     document.getElementById("basic").value = "";
+    location.reload();
 }
 
 $(document).ready( function() {
@@ -27,7 +28,18 @@ $(document).ready( function() {
 
         twitterFetcher.fetch(configProfile);
         console.log(allTweetText);
+        function getRandomColor() {
+            var back = ["#ff0000","blue","gray"];
+            var rand = back[Math.floor(Math.random() * back.length)];
+            return rand
+        }
+        var loadingScreenInterval = setInterval(function() {
+            var loadingNumber = Math.random().toFixed(3);
+            document.getElementById("loadingScreen").innerHTML = loadingNumber;
 
+            $("#loadingScreen").css("color", getRandomColor()).show();
+        }, 50);
+        setTimeout(function() {clearInterval(loadingScreenInterval); $("#loadingScreen").hide()}, 1500);
         setTimeout(function(){ToneAnalizer(allTweetText)}, 1500);
         console.log(texts)
 
@@ -57,7 +69,7 @@ function ToneAnalizer(tweetListArray) {
             dataType: 'json',
             success: function (result) {
                 console.log( result.sentiment.document.score)
-                $("#example2").append(" <li class='ui-li-has-alt ui-first-child' ><a href='' class='ui-btn'><h3>" + result.sentiment.document.score + "</h3><p >" + result.analyzed_text + "</p></a></li>")
+                $("#example2").append(" <li class='ui-li-has-alt ui-first-child' ><a href='' class='ui-btn'><h3>" + result.sentiment.document.score.toFixed(3) + "</h3><p >" + result.analyzed_text + "</p></a></li>")
                 arraypush(result.sentiment.document.score);
 
             },
@@ -91,7 +103,7 @@ function Averager (tweetScores){
     } else {
         posOrNeg = "Negative"
     }
-    $("#values").text(posOrNeg + " " + sentimentAverage)
+    $("#values").text(posOrNeg + " " + sentimentAverage.toFixed(3))
 
 
 }
