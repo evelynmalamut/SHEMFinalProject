@@ -1,9 +1,9 @@
 <html>
 <head>
 
-    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <script src="school.js"></script>
@@ -19,7 +19,9 @@
     </div>
     <div role="main" class="ui-content">
         <label for="basic">Twitter user:</label>
+        <div id="textInput">
         <input type="text" value=""name="name" id="basic" >
+        </div>
     </div>
     <div id="xx">
         <input type="button"  value="Search" id="myButton" href="#page2">
@@ -31,7 +33,7 @@
 
 <div data-role="page" id="page2" data-add-back-btn="true">
     <div data-role="header">
-        <h1>Here are the tweets</h1>
+        <h1>Tweet Tone Score</h1>
         <a href="#page1" data-role="button" data-icon="back" onclick="clearInput()">Back</a>
     </div>
 
@@ -55,7 +57,7 @@
 <div data-role="page" id="page3" data-add-back-btn="true">
     <div data-role="header">
         <h1>Here are the tweets</h1>
-        <a href="#page1" data-role="button" data-icon="back"  onclick = "history.go(0)" onclick="clearInput()">Back</a>
+        <a href="#page2" data-role="button" data-icon="back">Back</a>
     </div>
 
     <div>

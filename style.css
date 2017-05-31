@@ -105,3 +105,11 @@ ul li:hover {
     text-align: center;
     font-size: 16vw;
 }
+
+#values {
+    text-align: center;
+}
+
+#example2 {
+    margin-left: 10%;
+}

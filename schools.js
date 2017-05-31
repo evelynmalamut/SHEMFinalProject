@@ -6,7 +6,7 @@ function clearInput() {
 
 $(document).ready(function() {
 
-    $(document).keyup(function(e) {
+    $("#textInput").keyup(function(e) {
         if(e.which == 13) {
             $("#myButton").click();
         }
