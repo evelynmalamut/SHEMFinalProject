@@ -5,31 +5,10 @@ function clearInput() {
 }
 
 $(document).ready( function() {
-
-    $(document).keypress(function(e) {
+    $("#loadingScreen, #tweetView").hide();
+    $(document).keyup(function(e) {
         if(e.which == 13) {
-            var word = document.getElementById("basic").value;
-            var configProfile = {
-                "profile": {"screenName": word},
-                "domId": 'example1',
-                /*
-                 this is the number of tweets that it'll get
-                 */
-                "maxTweets": 5,
-                "enableLinks": true,
-                "showUser": true,
-                "showTime": true,
-                "showImages": false,
-                "lang": 'en'
-            };
-
-            $("body").pagecontainer("change", "#page2", { transition: "fade"});
-
-            twitterFetcher.fetch(configProfile);
-            console.log(allTweetText);
-
-            setTimeout(function(){ToneAnalizer(allTweetText)}, 1500);
-            console.log(texts);
+            $("#myButton").click();
         }
     });
 
