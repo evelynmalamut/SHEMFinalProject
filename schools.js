@@ -4,8 +4,8 @@ function clearInput() {
     location.reload();
 }
 
-$(document).ready( function() {
-    $("#loadingScreen, #tweetView").hide();
+$(document).ready(function() {
+
     $(document).keyup(function(e) {
         if(e.which == 13) {
             $("#myButton").click();
@@ -52,7 +52,7 @@ $(document).ready( function() {
 
 
 $(document).ready( function() {
-
+    $("#hideButton").hide();
     $("#tweetView").click(function () {
 
         $("body").pagecontainer("change", "#page3", {transition: "slide"})
@@ -93,7 +93,7 @@ function ToneAnalizer(tweetListArray) {
 
     }
     console.log(arrayOfSentTweets);
-    setTimeout(function(){Averager(arrayOfSentTweets)}, 1000)
+    setTimeout(function(){Averager(arrayOfSentTweets); $("#hideButton").show()}, 1000)
 
 }
 
