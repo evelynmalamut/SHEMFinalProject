@@ -122,7 +122,7 @@ function Averager (tweetScores){
     } else {
         posOrNeg = "Negative"
     }
-    $("#values").text(posOrNeg + " " + sentimentAverage.toFixed(3))
+    $("#values").text("Overall: "+posOrNeg + " " + sentimentAverage.toFixed(3))
 
 
 }
