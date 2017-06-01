@@ -43,7 +43,7 @@ $(document).ready(function() {
 
             $("#loadingScreen").css("color", getRandomColor()).show();
         }, 50);
-        setTimeout(function() {clearInterval(loadingScreenInterval); $("#loadingScreen").hide()}, 1500);
+        setTimeout(function() {clearInterval(loadingScreenInterval); $("#loadingScreen").hide()}, 2500);
         setTimeout(function(){ToneAnalizer(allTweetText)}, 1500);
         console.log(texts)
 
@@ -52,7 +52,7 @@ $(document).ready(function() {
 
 
 $(document).ready( function() {
-    $("#hideButton").hide();
+    $("#hideButton, #example2, #values").hide();
     $("#tweetView").click(function () {
 
         $("body").pagecontainer("change", "#page3", {transition: "slide"})
@@ -68,6 +68,7 @@ $(document).ready( function() {
 });
 
 
+var sentimentAverage= 0;
 var arrayOfSentTweets = [];
 function ToneAnalizer(tweetListArray) {
     for (var i = 0; i < tweetListArray.length; i = i + 1) {
@@ -93,7 +94,15 @@ function ToneAnalizer(tweetListArray) {
 
     }
     console.log(arrayOfSentTweets);
-    setTimeout(function(){Averager(arrayOfSentTweets); $("#hideButton").show()}, 1000)
+    setTimeout(function(){
+        Averager(arrayOfSentTweets);
+        if(arrayOfSentTweets.length > 0) {
+            $("#hideButton, #example2, #values").show()
+        } else {
+            document.getElementById("values").innerHTML = "Twitter User Not Found"
+            $('#values').show();
+        }
+    }, 1000)
 
 }
 
@@ -103,7 +112,6 @@ function arraypush(score){
 }
 
 function Averager (tweetScores){
-    var sentimentAverage= 0
     var posOrNeg= ""
     for (i = 0; i < tweetScores.length; i++) {
         sentimentAverage = sentimentAverage +tweetScores[i];
