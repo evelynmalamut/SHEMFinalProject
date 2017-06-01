@@ -1,7 +1,13 @@
-
+var fontArray = ["Arial", "Verdana", "Helvetica", "Rockwell Extra Bold", "Apple Chancery", "Applegothic", "Avenir", "Dialog", "fantasy", "Futura", "Gungseo", "HeadLineA", "Impact", "Marker Felt"]
 function clearInput() {
     document.getElementById("basic").value = "";
     location.reload();
+}
+
+function getRandomFont() {
+    var num;
+    num=Math.floor(Math.random()*fontArray.length);
+    return fontArray[num];
 }
 
 $(document).ready(function() {
@@ -41,7 +47,7 @@ $(document).ready(function() {
             var loadingNumber = Math.random().toFixed(3);
             document.getElementById("loadingScreen").innerHTML = loadingNumber;
 
-            $("#loadingScreen").css("color", getRandomColor()).show();
+            $("#loadingScreen").css("color", getRandomColor()).css("font-family", getRandomFont()).show();
         }, 50);
         setTimeout(function() {clearInterval(loadingScreenInterval); $("#loadingScreen").hide()}, 2500);
         setTimeout(function(){ToneAnalizer(allTweetText)}, 1500);
