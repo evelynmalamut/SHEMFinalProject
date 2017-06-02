@@ -28,7 +28,7 @@ $(document).ready(function() {
             /*
             this is the number of tweets that it'll get
              */
-            "maxTweets": 5,
+            "maxTweets": 10,
             "enableLinks": true,
             "showUser": true,
             "showTime": true,
@@ -73,7 +73,7 @@ $(document).ready( function() {
 
         $("body").pagecontainer("change", "#page3", {transition: "slide"})
 
-    })
+    });
     /*
     goes back to page 1 with the back button
      */
@@ -88,7 +88,7 @@ var sentimentAverage= 0;
 var arrayOfSentTweets = [];
 function ToneAnalizer(tweetListArray) {
     for (var i = 0; i < tweetListArray.length; i = i + 1) {
-        console.log(tweetListArray[i])
+        console.log(tweetListArray[i]);
         var tempVartoHoldTweet = tweetListArray[i].replace(/[^a-zA-Z0-9 ]/g, '');
         $.ajax({
             url: "https://watson-api-explorer.mybluemix.net/natural-language-understanding/api/v1/analyze?version=2017-02-27&text=" + tempVartoHoldTweet + "&features=sentiment&return_analyzed_text=true&clean=true&fallback_to_raw=true&concepts.limit=8&emotion.document=true&entities.limit=50&entities.emotion=false&entities.sentiment=false&keywords.limit=50&keywords.emotion=false&keywords.sentiment=false&relations.model=en-news&semantic_roles.limit=50&semantic_roles.entities=false&semantic_roles.keywords=false&sentiment.document=true",
@@ -96,7 +96,7 @@ function ToneAnalizer(tweetListArray) {
             crossDomain: true,
             dataType: 'json',
             success: function (result) {
-                console.log( result.sentiment.document.score)
+                console.log( result.sentiment.document.score);
                 $("#example2").append(" <li class='ui-li-has-alt ui-first-child' ><a href='' class='ui-btn'><h3>" + result.sentiment.document.score.toFixed(3) + "</h3><p >" + result.analyzed_text + "</p></a></li>")
                 arraypush(result.sentiment.document.score);
 
@@ -140,14 +140,4 @@ function Averager (tweetScores){
     }
     $("#values").text("Overall: "+posOrNeg + " " + sentimentAverage.toFixed(3))
 
-
 }
-
-
-
-
-
-
-
-
-
