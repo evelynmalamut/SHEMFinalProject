@@ -2,6 +2,7 @@ var fontArray = ["Arial", "Verdana", "Helvetica", "Rockwell Extra Bold", "Apple 
 var count = 0;
 function clearInput() {
     document.getElementById("basic").value = "";
+    document.getElementById("values").innerHTML = "";
     setTimeout(function() {location.reload();},  300);
 }
 
@@ -114,7 +115,7 @@ function ToneAnalizer(tweetListArray) {
         if(arrayOfSentTweets.length > 0) {
             $("#hideButton, #example2, #values").show()
         } else {
-            document.getElementById("values").innerHTML = "Twitter User Not Found"
+            document.getElementById("values").innerHTML = "Twitter User Not Found";
             $('#values').show();
         }
     }, 1000)
@@ -122,12 +123,12 @@ function ToneAnalizer(tweetListArray) {
 }
 
 function arraypush(score){
-    arrayOfSentTweets.push(score)
+    arrayOfSentTweets.push(score);
     console.log(arrayOfSentTweets)
 }
 
 function Averager (tweetScores){
-    var posOrNeg= ""
+    var posOrNeg= "";
     for (i = 0; i < tweetScores.length; i++) {
         sentimentAverage = sentimentAverage +tweetScores[i];
     }
