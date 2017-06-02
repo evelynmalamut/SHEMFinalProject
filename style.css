@@ -18,7 +18,10 @@
 .ui-header .ui-title {
     margin-right: 0px;
     margin-left: 0px;
-    font-family: " Source Sans Pro, sans-serif";
+    font-family: "Helvetica Neue";
+    color: white;
+    text-shadow: none;
+    background-color: #00aced;
 }
 
 body {
