@@ -2,7 +2,7 @@ var fontArray = ["Arial", "Verdana", "Helvetica", "Rockwell Extra Bold", "Apple 
 var count = 0;
 function clearInput() {
     document.getElementById("basic").value = "";
-    location.reload();
+    setTimeout(function() {location.reload();},  300);
 }
 
 function getRandomFont() {
