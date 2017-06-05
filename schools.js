@@ -2,7 +2,6 @@ var fontArray = ["Arial", "Verdana", "Helvetica", "Rockwell Extra Bold", "Apple 
 var count = 0;
 function clearInput() {
     document.getElementById("basic").value = "";
-    document.getElementById("values").innerHTML = "";
     setTimeout(function() {location.reload();},  300);
 }
 
@@ -13,7 +12,6 @@ function getRandomFont() {
 }
 
 $(document).ready(function() {
-
     $("#textInput").keyup(function(e) {
         if(e.which == 13) {
             $("#myButton").click();
