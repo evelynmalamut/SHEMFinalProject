@@ -2,6 +2,7 @@
 <head>
 
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
@@ -17,44 +18,16 @@
 
 <div data-role="page" id="page1">
     <div data-role="header">
-        <h1>Twitter Sentiment</h1>
+        <h1>Twintiment</h1>
     </div>
     <div role="main" class="ui-content">
-        <canvas id="myChart" width="400" height="400"></canvas>
-        <script>
-            var ctx = document.getElementById("myChart").getContext('2d');
-            var scatterChart = new Chart(ctx, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Scatter Dataset',
-                        data: [{
-                            y: 0
-                        }, {
-                            y: 10
-                        }, {
-                            y: 5
-                        }]
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            type: 'linear',
-                            position: 'bottom'
-                        }]
-                    }
-                }
-            });
-
-        </script>
         <label for="basic">Twitter user:</label>
         <div id="textInput">
         <input type="text" value=""name="name" id="basic" >
         </div>
     </div>
     <div id="xx">
-        <input type="button" value="Search" id="myButton" href="#page2"   style="background: #00aced; color: white;">
+        <input type="button" value="Search" id="myButton" href="#page2" style="background: #00aced; color: white; font-family: 'Helvetica Neue'">
     </div>
 </div>
 <ul data-role="listview" id="myList">
@@ -90,7 +63,10 @@
         <h1>Here are the tweets</h1>
         <a href="#page2" data-role="button" data-icon="back" id="back2">Back</a>
     </div>
-
+    <div id="myDiv" style="width: 480px; height: 300px;"></div>
+    <script>
+Graph(arrayOfSentTweets)
+    </script>
     <div>
         <ol data-role="listview" id="example1" >
         </ol>
@@ -105,10 +81,6 @@
     <div data-role="header">
         <h1>Graphing</h1>
         <a href="#page3" data-role="button" data-icon="back" id="back3">Back</a>
-    </div>
-
-    <div>
-
     </div>
 
 

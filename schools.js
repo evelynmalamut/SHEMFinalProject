@@ -1,3 +1,4 @@
+
 var fontArray = ["Arial", "Verdana", "Helvetica", "Rockwell Extra Bold", "Apple Chancery", "Applegothic", "Avenir", "Dialog", "fantasy", "Futura", "Gungseo", "HeadLineA", "Impact", "Marker Felt"]
 var count = 0;
 function clearInput() {
@@ -58,7 +59,7 @@ $(document).ready(function() {
             $("#loadingScreen").css("color", getRandomColor()).css("font-family", getRandomFont()).show();
         }, 50);
         setTimeout(function() {clearInterval(loadingScreenInterval); $("#loadingScreen").hide()}, 2500);
-        setTimeout(function(){ToneAnalizer(allTweetText)}, 1500);
+        setTimeout(function(){ToneAnalyzer(allTweetText)}, 1500);
         console.log(texts)
 
     });
@@ -84,7 +85,7 @@ $(document).ready( function() {
 
 var sentimentAverage= 0;
 var arrayOfSentTweets = [];
-function ToneAnalizer(tweetListArray) {
+function ToneAnalyzer(tweetListArray) {
     for (var i = 0; i < tweetListArray.length; i = i + 1) {
         console.log(tweetListArray[i]);
         var tempVartoHoldTweet = tweetListArray[i].replace(/[^a-zA-Z0-9 ]/g, '');
@@ -138,4 +139,23 @@ function Averager (tweetScores){
     }
     $("#values").text("Overall: "+posOrNeg + " " + sentimentAverage.toFixed(3))
 
+}
+
+function Graph(tweetScores) {
+    var trace1 = {
+        x:[0,0,0,0,0,0,0,0,0,0],
+        y: tweetScores,
+        mode: 'markers',
+        marker: {
+            size: 40,
+            color: [40, 35, 30, 25, 20, 15, 10, 5, 0]
+        }
+    };
+
+    var data = [trace1];
+
+    var layout = {
+        title: 'Scatter Plot with a Color Dimension'
+    };
+    Plotly.newPlot('myDiv', data, layout);
 }

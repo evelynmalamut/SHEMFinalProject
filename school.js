@@ -263,7 +263,7 @@ var word = '';
             var n = 0;
             if (dataOnly) {
                 while (n < x) {
-                    console.log(times[n].textContent)
+                    console.log(times[n].textContent);
                     arrayTweets.push({
                         tweet: tweets[n].innerHTML,
                         author: authors[n] ? authors[n].innerHTML : 'Unknown Author',
@@ -308,8 +308,8 @@ var word = '';
                         }
                         if (printUser) {
                            // console.log(tweets[n].textContent)
-                            allTweetText.push(tweets[n].textContent)
-                            texts = texts + tweets[n].textContent +"%2C"
+                            allTweetText.push(tweets[n].textContent);
+                            texts = texts + tweets[n].textContent +"%2C";
                             op += '<div class="user">' + strip(authors[n].innerHTML) + '</div>';
                         }
                         op += '<p class="tweet">' + strip(tweets[n].innerHTML) + '</p>';
@@ -327,7 +327,7 @@ var word = '';
                                 op += '<p class="user">' + authors[n].textContent + '</p>';
                             }
                             op += '<p class="tweet">' + tweets[n].textContent + '</p>';
-                            console.log(tweets[n].textContent)
+                            console.log(tweets[n].textContent);
                             if (printTime) {
                                 op += '<p class="timePosted">' + times[n].textContent + '</p>';
                             }
@@ -371,12 +371,8 @@ var word = '';
     window.__twttrf = twitterFetcher;
     window.twitterFetcher = twitterFetcher;
     return twitterFetcher;
-    console.log(allTweetText)
+    console.log(allTweetText);
 }));
-
-
-
-
 
 
 function dateFormatter(date) {
