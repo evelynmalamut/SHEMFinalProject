@@ -81,6 +81,11 @@ $(document).ready( function() {
         $("body").pagecontainer("change", "#page1", {transition: "slide"});
 
     });
+    $("#graphView").click(function () {
+
+        $("body").pagecontainer("change", "#page4", {transition: "slide"});
+
+    });
 });
 
 
@@ -157,9 +162,12 @@ function Graph(tweetScores) {
     var data = [trace1];
 
     var layout = {
+        autosize: false,
+        width: 400,
+        height: 300,
         xaxis: {range: [-1, 1], autosize: true},
         yaxis: {range: [-1, 1], autosize: true},
-        title: 'Scatter Plot with a Color Dimension',
+        title: 'Twitiment Scatter Plot'
 
     };
     Plotly.newPlot('myDiv', data, layout);
