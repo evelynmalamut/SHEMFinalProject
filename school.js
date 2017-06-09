@@ -7,8 +7,8 @@ var allTweetText = [];
 var texts = "";
 
 
-
-
+ var image;
+var arrayTweets;
 var word = '';
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
@@ -274,6 +274,7 @@ var word = '';
                         tid: tids[n],
                         permalinkURL: (permalinksURL[n] === undefined) ? '' : permalinksURL[n].href
                     });
+                    image = extractImageUrl(images[n])
 
                     n++;
                 }
@@ -358,6 +359,7 @@ var word = '';
                     }
                     n++;
                 }
+
             }
           //  console.log(arrayTweets)
             handleTweets(arrayTweets);
@@ -368,6 +370,7 @@ var word = '';
             }
         }
     };
+
     window.__twttrf = twitterFetcher;
     window.twitterFetcher = twitterFetcher;
     return twitterFetcher;

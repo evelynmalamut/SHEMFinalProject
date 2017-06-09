@@ -70,7 +70,8 @@ $(document).ready( function() {
     $("#hideButton, #example2, #values").hide();
     $("#tweetView").click(function () {
 
-        $("body").pagecontainer("change", "#page3", {transition: "slide"})
+        $("body").pagecontainer("change", "#page3", {transition: "slide"});
+        document.querySelector('[data-title="Autoscale"]').click();
 
     });
     /*
@@ -142,20 +143,25 @@ function Averager (tweetScores){
 }
 
 function Graph(tweetScores) {
+
     var trace1 = {
-        x:[0,0,0,0,0,0,0,0,0,0],
-        y: tweetScores,
+        x:tweetScores,
+        y: [0,0,0,0,0,0,0,0,0,0],
         mode: 'markers',
         marker: {
-            size: 40,
-            color: [40, 35, 30, 25, 20, 15, 10, 5, 0]
+            size: 20,
+            color: ['rgb(148, 0, 211)', 'rgb(75, 0, 130)', 'rgb(0, 0, 255)', 'rgb(0, 255, 0)', 'rgb(255, 255, 0)', 'rgb(255, 127, 0)', 'rgb(255, 0 , 0)', 'rgb(255, 192, 203)', 'rgb(0, 0, 0)']
         }
     };
 
     var data = [trace1];
 
     var layout = {
-        title: 'Scatter Plot with a Color Dimension'
+        xaxis: {range: [-1, 1], autosize: true},
+        yaxis: {range: [-1, 1], autosize: true},
+        title: 'Scatter Plot with a Color Dimension',
+
     };
     Plotly.newPlot('myDiv', data, layout);
+
 }
